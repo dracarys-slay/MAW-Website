@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Customer Inquiry - MAW Robotics</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="/supabase.js"></script>
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-wrapper">
+                <div class="logo">
+                    <h1>MAW <span class="highlight">Robotics</span></h1>
+                    <p class="tagline">Future Tech</p>
+                </div>
+                <ul class="nav-menu">
+                    <li><a href="index.html" class="nav-link">Home</a></li>
+                    <li><a href="index.html#solutions" class="nav-link">Solutions</a></li>
+                    <li><a href="products.html" class="nav-link">Products</a></li>
+                    <li><a href="lease.html" class="nav-link">Lease</a></li>
+                    <li><a href="buy.html" class="nav-link">Buy</a></li>
+                    <li><a href="inquiry.html" class="nav-link active">Inquiry</a></li>
+                    <li><a href="servicing.html" class="nav-link">Servicing</a></li>
+                    <li><a href="complaint.html" class="nav-link">Support</a></li>
+                    <li><a href="feedback.html" class="nav-link">Feedback</a></li>
+                    <li><a href="admin/admin.html" class="nav-link admin-link">Admin</a></li>
+                </ul>
+                <div class="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <h1>Customer Inquiry</h1>
+            <p>Ask Us About Our Products and Services</p>
+        </div>
+    </section>
+
+    <!-- Inquiry Form -->
+    <section id="inquiry-form" class="inquiry-form-section">
+        <div class="container">
+            <h2>Send Your Inquiry</h2>
+            <form id="inquiryForm" class="form-container">
+                <h3 class="form-subtitle">Your Information</h3>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="inquiryName">Full Name *</label>
+                        <input type="text" id="inquiryName" name="inquiryName" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="inquiryEmail">Email Address *</label>
+                        <input type="email" id="inquiryEmail" name="inquiryEmail" required>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="inquiryPhone">Contact Number *</label>
+                        <input type="tel" id="inquiryPhone" name="inquiryPhone" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="inquiryCompany">Company/Organization</label>
+                        <input type="text" id="inquiryCompany" name="inquiryCompany">
+                    </div>
+                </div>
+
+                <h3 class="form-subtitle">Inquiry Details</h3>
+                <div class="form-group">
+                    <label for="inquiryCategory">Inquiry Category *</label>
+                    <select id="inquiryCategory" name="inquiryCategory" required>
+                        <option value="">-- Select Category --</option>
+                        <option value="Product Information">Product Information</option>
+                        <option value="Pricing & Quotes">Pricing & Quotes</option>
+                        <option value="Technical Specifications">Technical Specifications</option>
+                        <option value="Lease Options">Lease Options</option>
+                        <option value="Purchase Process">Purchase Process</option>
+                        <option value="Integration Support">Integration Support</option>
+                        <option value="Custom Solutions">Custom Solutions</option>
+                        <option value="Training Programs">Training Programs</option>
+                        <option value="Other">Other</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="productInterest">Product of Interest</label>
+                    <select id="productInterest" name="productInterest">
+                        <option value="">-- Select Product --</option>
+                        <option value="UNITREE G1 Air">UNITREE G1 Air</option>
+                        <option value="UNITREE G1 EDU">UNITREE G1 EDU</option>
+                        <option value="UNITREE Go2 PRO">UNITREE Go2 PRO</option>
+                        <option value="UNITREE Go2 X">UNITREE Go2 X</option>
+                        <option value="Not Sure Yet">Not Sure Yet</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="inquiryMessage">Your Inquiry *</label>
+                    <textarea id="inquiryMessage" name="inquiryMessage" placeholder="Please describe your inquiry in detail..." required style="min-height: 200px;"></textarea>
+                </div>
+
+                <h3 class="form-subtitle">Preferred Contact Method</h3>
+                <div style="background: var(--light-bg); padding: 20px; border-radius: 8px; margin-bottom: 25px;">
+                    <label style="display: flex; align-items: center; margin-bottom: 15px;">
+                        <input type="radio" name="contactMethod" value="Email" checked>
+                        <span style="margin-left: 10px;">Email</span>
+                    </label>
+                    <label style="display: flex; align-items: center; margin-bottom: 15px;">
+                        <input type="radio" name="contactMethod" value="Phone">
+                        <span style="margin-left: 10px;">Phone Call</span>
+                    </label>
+                    <label style="display: flex; align-items: center;">
+                        <input type="radio" name="contactMethod" value="Video Call">
+                        <span style="margin-left: 10px;">Video Call/Meeting</span>
+                    </label>
+                </div>
+
+                <div class="form-group">
+                    <label for="contactTiming">When should we contact you?</label>
+                    <input type="text" id="contactTiming" name="contactTiming" placeholder="e.g., Weekday mornings, evenings, anytime">
+                </div>
+
+                <div class="form-checkbox">
+                    <input type="checkbox" id="agreePrivacy" name="agreePrivacy" checked>
+                    <label for="agreePrivacy">I agree to be contacted about my inquiry</label>
+                </div>
+
+                <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 20px;">Submit Inquiry</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Contact Information -->
+    <section id="contact-info" class="contact-info-section">
+        <div class="container">
+            <h2>Get in Touch</h2>
+            <div class="contact-methods">
+                <div class="contact-method">
+                    <h3>📧 Email</h3>
+                    <p>info@mawrobotics.com</p>
+                    <p class="note">Response within 24 hours</p>
+                </div>
+                <div class="contact-method">
+                    <h3>📞 Phone</h3>
+                    <p>+977-1-XXXX-XXXX</p>
+                    <p class="note">Monday - Saturday, 9 AM - 6 PM</p>
+                </div>
+                <div class="contact-method">
+                    <h3>🏢 Office</h3>
+                    <p>Kathmandu, Nepal</p>
+                    <p class="note">Visit by appointment</p>
+                </div>
+                <div class="contact-method">
+                    <h3>🌐 Website</h3>
+                    <p><a href="https://www.mawvriddhifuturetech.com">www.mawvriddhifuturetech.com</a></p>
+                    <p class="note">Available 24/7</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section id="faq" class="faq-section">
+        <div class="container">
+            <h2>Frequently Asked Questions on Inquiries</h2>
+            <div class="faq-items">
+                <div class="faq-item">
+                    <h4>How quickly will I receive a response?</h4>
+                    <p>We aim to respond to all inquiries within 24 business hours. For urgent matters, please mention it in your message or call us directly.</p>
+                </div>
+                <div class="faq-item">
+                    <h4>Can I get a demo or trial period?</h4>
+                    <p>Yes! We offer demonstration sessions and trial periods for interested clients. Contact us with your requirements and preferred dates.</p>
+                </div>
+                <div class="faq-item">
+                    <h4>Do you offer site visits?</h4>
+                    <p>Absolutely. Our team can visit your facility for an on-site assessment and consultation. Please request this in your inquiry.</p>
+                </div>
+                <div class="faq-item">
+                    <h4>Can I request a customized proposal?</h4>
+                    <p>Yes! We provide customized proposals based on your specific requirements. Share your details, and we'll prepare a detailed quote.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>MAW Robotics</h4>
+                    <p>Engineering Nepal's Intelligent Future</p>
+                    <p class="footer-location">Location: Kathmandu, Nepal</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html#solutions">Solutions</a></li>
+                        <li><a href="products.html">Products</a></li>
+                        <li><a href="lease.html">Lease</a></li>
+                        <li><a href="buy.html">Buy</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Contact</h4>
+                    <p>Email: info@mawrobotics.com</p>
+                    <p>Phone: +977-1-XXXX-XXXX</p>
+                    <p><a href="https://www.mawvriddhifuturetech.com">www.mawvriddhifuturetech.com</a></p>
+                </div>
+                <div class="footer-section">
+                    <h4>Support</h4>
+                    <ul>
+                        <li><a href="complaint.html">Report Issue</a></li>
+                        <li><a href="feedback.html">Give Feedback</a></li>
+                        <li><a href="servicing.html">Schedule Service</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 MAW Robotics. All rights reserved. | Engineering Nepal's Intelligent Future</p>
+            </div>
+        </div>
+    </footer>
+
+    <style>
+        .page-header {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            color: var(--text-light);
+            padding: 60px 20px;
+            text-align: center;
+            margin-top: 70px;
+        }
+
+        .page-header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+
+        .page-header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+
+        .inquiry-form-section {
+            background: linear-gradient(135deg, var(--light-bg) 0%, #f5f9ff 100%);
+            padding: 80px 20px;
+        }
+
+        .inquiry-form-section h2 {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .form-subtitle {
+            color: var(--primary-color);
+            font-size: 1.3rem;
+            margin-top: 40px;
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid var(--border-color);
+        }
+
+        .contact-info-section {
+            background: #ffffff;
+            padding: 80px 20px;
+        }
+
+        .contact-methods {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .contact-method {
+            background: linear-gradient(135deg, var(--light-bg) 0%, #f9f9ff 100%);
+            padding: 30px;
+            border-radius: 10px;
+            border: 1px solid var(--border-color);
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .contact-method:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow);
+            border-color: var(--secondary-color);
+        }
+
+        .contact-method h3 {
+            color: var(--primary-color);
+            margin-bottom: 15px;
+            font-size: 1.2rem;
+        }
+
+        .contact-method p {
+            color: #666;
+            margin-bottom: 10px;
+            font-weight: 500;
+        }
+
+        .contact-method a {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .contact-method a:hover {
+            text-decoration: underline;
+        }
+
+        .contact-method .note {
+            font-size: 0.9rem;
+            font-weight: normal;
+            color: var(--secondary-color);
+            font-style: italic;
+        }
+
+        .faq-section {
+            background: linear-gradient(135deg, var(--light-bg) 0%, #f5f9ff 100%);
+            padding: 80px 20px;
+        }
+
+        .faq-items {
+            max-width: 900px;
+            margin: 50px auto 0;
+        }
+
+        .faq-item {
+            background: var(--text-light);
+            padding: 30px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            border-left: 4px solid var(--primary-color);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        }
+
+        .faq-item h4 {
+            color: var(--primary-color);
+            margin-bottom: 15px;
+            font-size: 1.1rem;
+        }
+
+        .faq-item p {
+            color: #666;
+            line-height: 1.7;
+        }
+    </style>
+
+    <script src="js/main.js"></script>
+    <script>
+document.getElementById('inquiryForm').addEventListener('submit', async function(e) {
+    e.preventDefault()
+
+    // Collect form values
+    const full_name = document.getElementById('inquiryName').value
+    const email = document.getElementById('inquiryEmail').value
+    const phone = document.getElementById('inquiryPhone').value
+    const company = document.getElementById('inquiryCompany').value
+    const category = document.getElementById('inquiryCategory').value
+    const product_interest = document.getElementById('productInterest').value
+    const message = document.getElementById('inquiryMessage').value
+    const contact_timing = document.getElementById('contactTiming').value
+
+    // Collect contact method (radio)
+    const contactRadio = document.querySelector('input[name="contactMethod"]:checked')
+    const contact_method = contactRadio ? contactRadio.value : 'Email'
+
+    // Show loading state
+    const submitBtn = document.querySelector('#inquiryForm button[type="submit"]')
+    submitBtn.textContent = 'Submitting...'
+    submitBtn.disabled = true
+
+    try {
+        // Step 1: Save or update customer
+        const { data: customer, error: customerError } = await supabaseClient
+            .from('customers')
+            .upsert(
+                { full_name, email, phone, company },
+                { onConflict: 'email' }
+            )
+            .select()
+            .single()
+
+        if (customerError) throw customerError
+
+        // Step 2: Save inquiry
+        const { error: inquiryError } = await supabaseClient
+            .from('inquiries')
+            .insert({
+                customer_id: customer.id,
+                subject: category,
+                message,
+                category,
+                product_interest,
+                contact_method,
+                contact_timing,
+                status: 'open'
+            })
+
+        if (inquiryError) throw inquiryError
+
+        // Success!
+        alert('✅ Inquiry submitted! We will get back to you within 24 hours.')
+        this.reset()
+
+    } catch (error) {
+        console.error('Error:', error)
+        alert('❌ Something went wrong: ' + error.message)
+    } finally {
+        submitBtn.textContent = 'Submit Inquiry'
+        submitBtn.disabled = false
+    }
+})
+</script>
+</body>
+</html>

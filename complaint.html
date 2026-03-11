@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Complaints - MAW Robotics</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="/supabase.js"></script>
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-wrapper">
+                <div class="logo">
+                    <h1>MAW <span class="highlight">Robotics</span></h1>
+                    <p class="tagline">Future Tech</p>
+                </div>
+                <ul class="nav-menu">
+                    <li><a href="index.html" class="nav-link">Home</a></li>
+                    <li><a href="index.html#solutions" class="nav-link">Solutions</a></li>
+                    <li><a href="products.html" class="nav-link">Products</a></li>
+                    <li><a href="lease.html" class="nav-link">Lease</a></li>
+                    <li><a href="buy.html" class="nav-link">Buy</a></li>
+                    <li><a href="inquiry.html" class="nav-link">Inquiry</a></li>
+                    <li><a href="servicing.html" class="nav-link">Servicing</a></li>
+                    <li><a href="complaint.html" class="nav-link active">Support</a></li>
+                    <li><a href="feedback.html" class="nav-link">Feedback</a></li>
+                    <li><a href="admin/admin.html" class="nav-link admin-link">Admin</a></li>
+                </ul>
+                <div class="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <h1>File a Complaint</h1>
+            <p>We Value Your Feedback - Help Us Serve You Better</p>
+        </div>
+    </section>
+
+    <!-- Complaint Form -->
+    <section id="complaint-form" class="complaint-form-section">
+        <div class="container">
+            <h2>Submit Your Complaint</h2>
+            <form id="complaintForm" class="form-container">
+                <h3 class="form-subtitle">Your Details</h3>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="complaintName">Full Name *</label>
+                        <input type="text" id="complaintName" name="complaintName" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="complaintEmail">Email Address *</label>
+                        <input type="email" id="complaintEmail" name="complaintEmail" required>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="complaintPhone">Contact Number *</label>
+                        <input type="tel" id="complaintPhone" name="complaintPhone" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="complaintLocation">City/Location *</label>
+                        <input type="text" id="complaintLocation" name="complaintLocation" required>
+                    </div>
+                </div>
+
+                <h3 class="form-subtitle">Product Information</h3>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="complaintProduct">Product Name *</label>
+                        <select id="complaintProduct" name="complaintProduct" required>
+                            <option value="">-- Select Product --</option>
+                            <option value="UNITREE G1 Air">UNITREE G1 Air</option>
+                            <option value="UNITREE G1 EDU">UNITREE G1 EDU</option>
+                            <option value="UNITREE Go2 PRO">UNITREE Go2 PRO</option>
+                            <option value="UNITREE Go2 X">UNITREE Go2 X</option>
+                            <option value="Other">Other</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="productSerial">Product Serial Number *</label>
+                        <input type="text" id="productSerial" name="productSerial" required>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="purchaseDate">Date of Purchase *</label>
+                    <input type="date" id="purchaseDate" name="purchaseDate" required>
+                </div>
+
+                <h3 class="form-subtitle">Complaint Details</h3>
+                <div class="form-group">
+                    <label for="complaintCategory">Complaint Category *</label>
+                    <select id="complaintCategory" name="complaintCategory" required>
+                        <option value="">-- Select Category --</option>
+                        <option value="Product Defect">Product Defect</option>
+                        <option value="Performance Issue">Performance Issue</option>
+                        <option value="Quality Problem">Quality Problem</option>
+                        <option value="Service Issue">Service Issue</option>
+                        <option value="Delivery Problem">Delivery Problem</option>
+                        <option value="Warranty Issue">Warranty Issue</option>
+                        <option value="Other">Other</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="complaintDescription">Detailed Complaint Description *</label>
+                    <textarea id="complaintDescription" name="complaintDescription" placeholder="Please describe the issue in detail..." required style="min-height: 150px;"></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="desiredResolution">Desired Resolution</label>
+                    <select id="desiredResolution" name="desiredResolution">
+                        <option value="">-- Select Resolution --</option>
+                        <option value="Repair">Repair</option>
+                        <option value="Replacement">Replacement</option>
+                        <option value="Refund">Refund</option>
+                        <option value="Discount">Discount</option>
+                        <option value="Other">Other</option>
+                    </select>
+                </div>
+
+                <div class="form-checkbox">
+                    <input type="checkbox" id="agreeComplaint" name="agreeComplaint" checked>
+                    <label for="agreeComplaint">I authorize MAW Robotics to investigate this complaint</label>
+                </div>
+
+                <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 20px;">Submit Complaint</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>MAW Robotics</h4>
+                    <p>Engineering Nepal's Intelligent Future</p>
+                    <p class="footer-location">Location: Kathmandu, Nepal</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html#solutions">Solutions</a></li>
+                        <li><a href="products.html">Products</a></li>
+                        <li><a href="lease.html">Lease</a></li>
+                        <li><a href="buy.html">Buy</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Contact</h4>
+                    <p>Email: info@mawrobotics.com</p>
+                    <p>Phone: +977-1-XXXX-XXXX</p>
+                    <p><a href="https://www.mawvriddhifuturetech.com">www.mawvriddhifuturetech.com</a></p>
+                </div>
+                <div class="footer-section">
+                    <h4>Support</h4>
+                    <ul>
+                        <li><a href="complaint.html">Report Issue</a></li>
+                        <li><a href="feedback.html">Give Feedback</a></li>
+                        <li><a href="servicing.html">Schedule Service</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 MAW Robotics. All rights reserved. | Engineering Nepal's Intelligent Future</p>
+            </div>
+        </div>
+    </footer>
+
+    <style>
+        .page-header {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            color: var(--text-light);
+            padding: 60px 20px;
+            text-align: center;
+            margin-top: 70px;
+        }
+
+        .page-header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+
+        .page-header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+
+        .complaint-form-section {
+            background: linear-gradient(135deg, var(--light-bg) 0%, #f5f9ff 100%);
+            padding: 80px 20px;
+        }
+
+        .complaint-form-section h2 {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .form-subtitle {
+            color: var(--primary-color);
+            font-size: 1.3rem;
+            margin-top: 40px;
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid var(--border-color);
+        }
+    </style>
+
+    <script src="js/main.js"></script>
+   <script>
+document.getElementById('complaintForm').addEventListener('submit', async function(e) {
+    e.preventDefault()
+
+    // Collect form values
+    const full_name = document.getElementById('complaintName').value
+    const email = document.getElementById('complaintEmail').value
+    const phone = document.getElementById('complaintPhone').value
+    const location = document.getElementById('complaintLocation').value
+    const product_name = document.getElementById('complaintProduct').value
+    const serial_number = document.getElementById('productSerial').value
+    const purchase_date = document.getElementById('purchaseDate').value
+    const complaint_type = document.getElementById('complaintCategory').value
+    const description = document.getElementById('complaintDescription').value
+    const desired_resolution = document.getElementById('desiredResolution').value
+
+    // Show loading state
+    const submitBtn = document.querySelector('#complaintForm button[type="submit"]')
+    submitBtn.textContent = 'Submitting...'
+    submitBtn.disabled = true
+
+    try {
+        // Step 1: Save or update customer
+        const { data: customer, error: customerError } = await supabaseClient
+            .from('customers')
+            .upsert(
+                { full_name, email, phone },
+                { onConflict: 'email' }
+            )
+            .select()
+            .single()
+
+        if (customerError) throw customerError
+
+        // Step 2: Save complaint
+        const { error: complaintError } = await supabaseClient
+            .from('complaints')
+            .insert({
+                customer_id: customer.id,
+                complaint_type,
+                description,
+                product_name,
+                serial_number,
+                purchase_date,
+                location,
+                desired_resolution,
+                status: 'open'
+            })
+
+        if (complaintError) throw complaintError
+
+        // Success!
+        alert('✅ Complaint submitted! We take this seriously and will respond within 24 hours.')
+        this.reset()
+
+    } catch (error) {
+        console.error('Error:', error)
+        alert('❌ Something went wrong: ' + error.message)
+    } finally {
+        submitBtn.textContent = 'Submit Complaint'
+        submitBtn.disabled = false
+    }
+})
+</script>
+</body>
+</html>

@@ -1,0 +1,340 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="/supabase.js"></script>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MAW Future Tech - Engineering Nepal's Intelligent Future</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="/supabase.js"></script>
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-wrapper">
+                <div class="logo">
+                    <h1>MAW <span class="highlight">Robotics</span></h1>
+                    <p class="tagline">Future Tech</p>
+                </div>
+                <ul class="nav-menu">
+                    <li><a href="#home" class="nav-link active">Home</a></li>
+                    <li><a href="#solutions" class="nav-link">Solutions</a></li>
+                    <li><a href="products.html" class="nav-link">Products</a></li>
+                    <li><a href="lease.html" class="nav-link">Lease</a></li>
+                    <li><a href="buy.html" class="nav-link">Buy</a></li>
+                    <li><a href="inquiry.html" class="nav-link">Inquiry</a></li>
+                    <li><a href="servicing.html" class="nav-link">Servicing</a></li>
+                    <li><a href="complaint.html" class="nav-link">Support</a></li>
+                    <li><a href="feedback.html" class="nav-link">Feedback</a></li>
+                    <li><a href="admin/admin.html" class="nav-link admin-link">Admin</a></li>
+                </ul>
+                <div class="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section with Cover Page -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1 class="hero-title">MAW FUTURE TECH</h1>
+            <p class="hero-subtitle">Engineering Nepal's Intelligent Future</p>
+            
+            <div class="robot-brand-section">
+                <div class="brand-box">
+                    <h2>MAW Robotics</h2>
+                    <p class="company-slogan">"Where Robots and Humans Work as One"</p>
+                </div>
+            </div>
+
+            <p class="hero-description">Advanced Robotics & Automation Solutions for Industries, Healthcare, Hospitality, and Government</p>
+            
+            <div class="company-info-banner">
+                <p><strong>Head Office:</strong> Kathmandu, Nepal</p>
+                <p><strong>Official Website:</strong> <a href="https://www.mawvriddhifuturetech.com" target="_blank">www.mawvriddhifuturetech.com</a></p>
+            </div>
+            
+            <div class="cta-buttons">
+                <button class="btn btn-primary" onclick="document.getElementById('solutions').scrollIntoView({behavior: 'smooth'})">Book a Demo</button>
+                <button class="btn btn-secondary" onclick="scrollToSection('contact')">Partner With Us</button>
+            </div>
+        </div>
+        <div class="hero-background"></div>
+    </section>
+
+    <!-- About Snapshot -->
+    <section id="about" class="about-section">
+        <div class="container">
+            <h2>About MAW Robotics</h2>
+            <p class="about-text">
+                MAW Robotics is Nepal's emerging leader in intelligent automation and robotic systems, 
+                delivering global technology with local expertise. We integrate cutting-edge robotics solutions 
+                tailored to meet the unique needs of industries, healthcare, hospitality, and government sectors.
+            </p>
+        </div>
+    </section>
+
+    <!-- Solutions Section -->
+    <section id="solutions" class="solutions">
+        <div class="container">
+            <h2>Our Core Divisions</h2>
+            <div class="solutions-grid">
+                <div class="solution-card">
+                    <h3>Industrial Automation</h3>
+                    <ul>
+                        <li>Robotic arms</li>
+                        <li>CNC automation</li>
+                        <li>Packaging automation</li>
+                        <li>Factory integration systems</li>
+                    </ul>
+                </div>
+                <div class="solution-card">
+                    <h3>Service Robotics</h3>
+                    <ul>
+                        <li>Hotel delivery robots</li>
+                        <li>Restaurant serving robots</li>
+                        <li>Mall guidance robots</li>
+                        <li>Airport assistance robots</li>
+                    </ul>
+                </div>
+                <div class="solution-card">
+                    <h3>Healthcare Robotics</h3>
+                    <ul>
+                        <li>Disinfection robots</li>
+                        <li>Medicine delivery robots</li>
+                        <li>Telepresence systems</li>
+                    </ul>
+                </div>
+                <div class="solution-card">
+                    <h3>Education & AI Robotics</h3>
+                    <ul>
+                        <li>STEM robotics labs</li>
+                        <li>AI training kits</li>
+                        <li>Robotics curriculum integration</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Industries We Serve -->
+    <section id="industries" class="industries">
+        <div class="container">
+            <h2>Industries We Serve</h2>
+            <div class="industries-grid">
+                <div class="industry-item">
+                    <img class="industry-image" src="images/industries/hospitality.svg" alt="Hospitality industry solutions">
+                    <h4>Hospitality</h4>
+                    <p>Hotels, restaurants, and guest services.</p>
+                </div>
+                <div class="industry-item">
+                    <img class="industry-image" src="images/industries/healthcare.svg" alt="Healthcare industry solutions">
+                    <h4>Healthcare</h4>
+                    <p>Hospitals, clinics, and health operations.</p>
+                </div>
+                <div class="industry-item">
+                    <img class="industry-image" src="images/industries/manufacturing.svg" alt="Manufacturing industry solutions">
+                    <h4>Manufacturing</h4>
+                    <p>Factories, plants, and production systems.</p>
+                </div>
+                <div class="industry-item">
+                    <img class="industry-image" src="images/industries/airports.svg" alt="Airport industry solutions">
+                    <h4>Airports</h4>
+                    <p>Passenger support and airport automation.</p>
+                </div>
+                <div class="industry-item">
+                    <img class="industry-image" src="images/industries/government.svg" alt="Government industry solutions">
+                    <h4>Government</h4>
+                    <p>Public services and smart governance projects.</p>
+                </div>
+                <div class="industry-item">
+                    <img class="industry-image" src="images/industries/education.svg" alt="Education industry solutions">
+                    <h4>Education</h4>
+                    <p>Schools, colleges, and training institutions.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Us -->
+    <section id="why-us" class="why-us">
+        <div class="container">
+            <h2>Why Choose MAW Robotics?</h2>
+            <div class="features-grid">
+                <div class="feature">
+                    <span class="checkmark">&#10003;</span>
+                    <h4>International OEM Partnerships</h4>
+                    <p>Access to world-class robotics technology and partnerships</p>
+                </div>
+                <div class="feature">
+                    <span class="checkmark">&#10003;</span>
+                    <h4>Strong Technical Integration Team</h4>
+                    <p>Expert engineers skilled in system design and implementation</p>
+                </div>
+                <div class="feature">
+                    <span class="checkmark">&#10003;</span>
+                    <h4>Local Service & Maintenance Support</h4>
+                    <p>Reliable on-site support in Kathmandu and across Nepal</p>
+                </div>
+                <div class="feature">
+                    <span class="checkmark">&#10003;</span>
+                    <h4>Customized Solutions</h4>
+                    <p>Tailor-made robotics solutions for your specific needs</p>
+                </div>
+                <div class="feature">
+                    <span class="checkmark">&#10003;</span>
+                    <h4>Long-Term AMC Contracts</h4>
+                    <p>Comprehensive maintenance and support agreements</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Revenue Model -->
+    <section id="revenue" class="revenue-model">
+        <div class="container">
+            <h2>Our Revenue Model</h2>
+            <div class="revenue-items">
+                <div class="revenue-item">
+                    <h4>Robotics Sales</h4>
+                    <p>Direct sales of advanced robotic systems</p>
+                </div>
+                <div class="revenue-item">
+                    <h4>System Integration Fees</h4>
+                    <p>Custom integration and setup services</p>
+                </div>
+                <div class="revenue-item">
+                    <h4>AMC & Maintenance</h4>
+                    <p>Annual maintenance contracts and support</p>
+                </div>
+                <div class="revenue-item">
+                    <h4>Software Licensing</h4>
+                    <p>Proprietary software and control systems</p>
+                </div>
+                <div class="revenue-item">
+                    <h4>Training & Educational Programs</h4>
+                    <p>Training and certification programs</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products Preview -->
+    <section id="products-preview" class="products-preview">
+        <div class="container">
+            <h2>Our Robotic Products</h2>
+            <p class="section-subtitle">Explore our cutting-edge robotics solutions</p>
+            <div class="products-preview-grid">
+                <div class="product-preview-card">
+                    <h4>UNITREE G1 Air</h4>
+                    <p>Advanced humanoid robot for dynamic environments</p>
+                    <a href="products.html#g1-air" class="btn-link">View Details -></a>
+                </div>
+                <div class="product-preview-card">
+                    <h4>UNITREE G1 EDU</h4>
+                    <p>Educational-focused humanoid for learning programs</p>
+                    <a href="products.html#g1-edu" class="btn-link">View Details -></a>
+                </div>
+                <div class="product-preview-card">
+                    <h4>UNITREE Go2 PRO</h4>
+                    <p>Professional quadruped for industrial applications</p>
+                    <a href="products.html#go2-pro" class="btn-link">View Details -></a>
+                </div>
+                <div class="product-preview-card">
+                    <h4>UNITREE Go2 X</h4>
+                    <p>Extended capability quadruped for complex tasks</p>
+                    <a href="products.html#go2-x" class="btn-link">View Details -></a>
+                </div>
+            </div>
+            <div class="view-all-products">
+                <a href="products.html" class="btn btn-primary">View All Products & Specifications</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Quick Access Services -->
+    <section id="services" class="quick-services">
+        <div class="container">
+            <h2>Our Services</h2>
+            <div class="services-grid">
+                <a href="lease.html" class="service-card">
+                    <h3>Robot Leasing</h3>
+                    <p>Flexible leasing options for your business needs</p>
+                </a>
+                <a href="buy.html" class="service-card">
+                    <h3>Purchase and Booking</h3>
+                    <p>Buy the latest robotics solutions</p>
+                </a>
+                <a href="inquiry.html" class="service-card">
+                    <h3>Customer Inquiries</h3>
+                    <p>Ask about our products and services</p>
+                </a>
+                <a href="servicing.html" class="service-card">
+                    <h3>Robot Servicing</h3>
+                    <p>Schedule maintenance and servicing</p>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Final CTA -->
+    <section id="contact" class="final-cta">
+        <div class="container">
+            <h2>Ready to Automate Your Future?</h2>
+            <p>Contact us today to explore how MAW Robotics can transform your business</p>
+            <div class="cta-final-buttons">
+                <a href="inquiry.html" class="btn btn-primary">Contact Us Today</a>
+                <a href="https://www.mawvriddhifuturetech.com" target="_blank" class="btn btn-secondary">Visit Our Website</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>MAW Robotics</h4>
+                    <p>Engineering Nepal's Intelligent Future</p>
+                    <p class="footer-location">Location: Kathmandu, Nepal</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="#solutions">Solutions</a></li>
+                        <li><a href="products.html">Products</a></li>
+                        <li><a href="lease.html">Lease</a></li>
+                        <li><a href="buy.html">Buy</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Contact</h4>
+                    <p>Email: info@mawrobotics.com</p>
+                    <p>Phone: +977-1-XXXX-XXXX</p>
+                    <p><a href="https://www.mawvriddhifuturetech.com">www.mawvriddhifuturetech.com</a></p>
+                </div>
+                <div class="footer-section">
+                    <h4>Support</h4>
+                    <ul>
+                        <li><a href="complaint.html">Report Issue</a></li>
+                        <li><a href="feedback.html">Give Feedback</a></li>
+                        <li><a href="servicing.html">Schedule Service</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 MAW Robotics. All rights reserved. | Engineering Nepal's Intelligent Future</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+</html>

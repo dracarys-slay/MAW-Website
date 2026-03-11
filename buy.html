@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Buy Robots - MAW Robotics</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="/supabase.js"></script>
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-wrapper">
+                <div class="logo">
+                    <h1>MAW <span class="highlight">Robotics</span></h1>
+                    <p class="tagline">Future Tech</p>
+                </div>
+                <ul class="nav-menu">
+                    <li><a href="index.html" class="nav-link">Home</a></li>
+                    <li><a href="index.html#solutions" class="nav-link">Solutions</a></li>
+                    <li><a href="products.html" class="nav-link">Products</a></li>
+                    <li><a href="lease.html" class="nav-link">Lease</a></li>
+                    <li><a href="buy.html" class="nav-link active">Buy</a></li>
+                    <li><a href="inquiry.html" class="nav-link">Inquiry</a></li>
+                    <li><a href="servicing.html" class="nav-link">Servicing</a></li>
+                    <li><a href="complaint.html" class="nav-link">Support</a></li>
+                    <li><a href="feedback.html" class="nav-link">Feedback</a></li>
+                    <li><a href="admin/admin.html" class="nav-link admin-link">Admin</a></li>
+                </ul>
+                <div class="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <h1>Purchase Robotic Systems</h1>
+            <p>Invest in Your Future with MAW Robotics</p>
+        </div>
+    </section>
+
+    <!-- Purchase Info -->
+    <section id="purchase-info" class="purchase-info">
+        <div class="container">
+            <h2>Why Purchase from MAW Robotics?</h2>
+            <div class="purchase-benefits">
+                <div class="benefit-item">
+                    <span class="icon">✓</span>
+                    <h3>Complete Support</h3>
+                    <p>Full technical support and warranty coverage for peace of mind</p>
+                </div>
+                <div class="benefit-item">
+                    <span class="icon">✓</span>
+                    <h3>Custom Integration</h3>
+                    <p>Professional integration services tailored to your needs</p>
+                </div>
+                <div class="benefit-item">
+                    <span class="icon">✓</span>
+                    <h3>Flexible Payment</h3>
+                    <p>Multiple payment options including installment plans</p>
+                </div>
+                <div class="benefit-item">
+                    <span class="icon">✓</span>
+                    <h3>Training Included</h3>
+                    <p>Comprehensive operator training and staff development</p>
+                </div>
+                <div class="benefit-item">
+                    <span class="icon">✓</span>
+                    <h3>Lifetime Updates</h3>
+                    <p>Free software updates and firmware upgrades</p>
+                </div>
+                <div class="benefit-item">
+                    <span class="icon">✓</span>
+                    <h3>Warranty Backed</h3>
+                    <p>Extended warranty options available for all products</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Purchase Form -->
+    <section id="buy-form" class="buy-form-section">
+        <div class="container">
+            <h2>Place Your Order</h2>
+            <form id="buyForm" class="form-container">
+                <!-- Customer Information -->
+                <h3 class="form-subtitle">Contact Information</h3>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="buyerName">Full Name *</label>
+                        <input type="text" id="buyerName" name="buyerName" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="buyerCompany">Company/Organization *</label>
+                        <input type="text" id="buyerCompany" name="buyerCompany" required>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="buyerEmail">Email Address *</label>
+                        <input type="email" id="buyerEmail" name="buyerEmail" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="buyerPhone">Contact Number *</label>
+                        <input type="tel" id="buyerPhone" name="buyerPhone" required>
+                    </div>
+                </div>
+
+                <!-- Product Selection -->
+                <h3 class="form-subtitle">Product Selection</h3>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="productChoice">Select Product *</label>
+                        <select id="productChoice" name="productChoice" required>
+                            <option value="">-- Select Robot --</option>
+                            <option value="UNITREE G1 Air">UNITREE G1 Air</option>
+                            <option value="UNITREE G1 EDU">UNITREE G1 EDU</option>
+                            <option value="UNITREE Go2 PRO">UNITREE Go2 PRO</option>
+                            <option value="UNITREE Go2 X">UNITREE Go2 X</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="quantity">Number of Units *</label>
+                        <input type="number" id="quantity" name="quantity" min="1" value="1" required>
+                    </div>
+                </div>
+
+                <!-- Additional Services -->
+                <h3 class="form-subtitle">Additional Services</h3>
+                <div style="background: var(--light-bg); padding: 20px; border-radius: 8px; margin-bottom: 25px;">
+                    <label style="display: flex; align-items: center; margin-bottom: 15px; cursor: pointer;">
+                        <input type="checkbox" name="service" value="Extended Warranty">
+                        <span style="margin-left: 10px;">Extended Warranty</span>
+                    </label>
+                    <label style="display: flex; align-items: center; margin-bottom: 15px; cursor: pointer;">
+                        <input type="checkbox" name="service" value="Installation and Setup Service">
+                        <span style="margin-left: 10px;">Installation and Setup Service</span>
+                    </label>
+                    <label style="display: flex; align-items: center; margin-bottom: 15px; cursor: pointer;">
+                        <input type="checkbox" name="service" value="Staff Training Program">
+                        <span style="margin-left: 10px;">Staff Training Program</span>
+                    </label>
+                    <label style="display: flex; align-items: center; cursor: pointer;">
+                        <input type="checkbox" name="service" value="Custom Integration Service">
+                        <span style="margin-left: 10px;">Custom Integration Service</span>
+                    </label>
+                </div>
+
+                <!-- Delivery Information -->
+                <h3 class="form-subtitle">Delivery Information</h3>
+                <div class="form-group">
+                    <label for="deliveryAddress">Delivery Address *</label>
+                    <input type="text" id="deliveryAddress" name="deliveryAddress" required>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="deliveryCity">City *</label>
+                        <input type="text" id="deliveryCity" name="deliveryCity" placeholder="e.g., Kathmandu" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="deliveryDate">Preferred Delivery Date *</label>
+                        <input type="date" id="deliveryDate" name="deliveryDate" required>
+                    </div>
+                </div>
+
+                <!-- Payment Method -->
+                <h3 class="form-subtitle">Payment Method</h3>
+                <div style="background: var(--light-bg); padding: 20px; border-radius: 8px; margin-bottom: 25px;">
+                    <label style="display: flex; align-items: center; margin-bottom: 15px;">
+                        <input type="radio" name="paymentMethod" value="Full Payment" required>
+                        <span style="margin-left: 10px;">Full Payment</span>
+                    </label>
+                    <label style="display: flex; align-items: center; margin-bottom: 15px;">
+                        <input type="radio" name="paymentMethod" value="50% Advance + 50% on Delivery">
+                        <span style="margin-left: 10px;">50% Advance + 50% on Delivery</span>
+                    </label>
+                    <label style="display: flex; align-items: center;">
+                        <input type="radio" name="paymentMethod" value="EMI (12-24 months)">
+                        <span style="margin-left: 10px;">EMI (12-24 months)</span>
+                    </label>
+                </div>
+
+                <!-- Special Requirements -->
+                <h3 class="form-subtitle">Special Requirements</h3>
+                <div class="form-group">
+                    <label for="specialRequest">Any Customizations or Special Requests?</label>
+                    <textarea id="specialRequest" name="specialRequest" placeholder="Describe any modifications or special requirements..."></textarea>
+                </div>
+
+                <!-- Agreement -->
+                <div class="form-checkbox">
+                    <input type="checkbox" id="agreeTerms" name="agreeTerms" required>
+                    <label for="agreeTerms">I agree to the purchase terms and conditions *</label>
+                </div>
+
+                <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 20px; padding: 15px;">Complete Purchase Order</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Financing Options -->
+    <section id="financing" class="financing-section">
+        <div class="container">
+            <h2>Flexible Financing Options</h2>
+            <div class="financing-grid">
+                <div class="financing-card">
+                    <h3>Credit Card</h3>
+                    <p>Secure payment via major international credit cards with buyer protection.</p>
+                </div>
+                <div class="financing-card">
+                    <h3>Bank Transfer</h3>
+                    <p>Direct bank transfer with competitive rates and no hidden charges.</p>
+                </div>
+                <div class="financing-card">
+                    <h3>EMI Plans</h3>
+                    <p>Easy monthly installments with flexible tenure from 12-24 months.</p>
+                </div>
+                <div class="financing-card">
+                    <h3>Corporate Account</h3>
+                    <p>Special corporate packages and net-30/net-60 payment terms available.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section id="faq" class="faq-section">
+        <div class="container">
+            <h2>Frequently Asked Questions</h2>
+            <div class="faq-items">
+                <div class="faq-item">
+                    <h4>What is the warranty period?</h4>
+                    <p>All robots include standard warranty support for parts and labor. Final warranty terms are shared in the official quotation.</p>
+                </div>
+                <div class="faq-item">
+                    <h4>Can I get custom specifications?</h4>
+                    <p>Yes! We offer full customization services. Please contact our sales team with your specific requirements for a custom quote.</p>
+                </div>
+                <div class="faq-item">
+                    <h4>How long is the delivery time?</h4>
+                    <p>Standard delivery within Nepal takes 2-4 weeks. International shipping can be arranged with additional timeline. Expedited delivery options are available.</p>
+                </div>
+                <div class="faq-item">
+                    <h4>Do you offer installation services?</h4>
+                    <p>Yes, professional installation and integration services are available for an additional fee. Our team will ensure proper setup and testing.</p>
+                </div>
+                <div class="faq-item">
+                    <h4>What support is provided after purchase?</h4>
+                    <p>We provide 24/7 technical support, regular maintenance, software updates, and training for your team at no extra cost during warranty period.</p>
+                </div>
+                <div class="faq-item">
+                    <h4>Can I return the robot if not satisfied?</h4>
+                    <p>We offer a 30-day satisfaction guarantee for unused products in original condition. Please contact our support team for details.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>MAW Robotics</h4>
+                    <p>Engineering Nepal's Intelligent Future</p>
+                    <p class="footer-location">Location: Kathmandu, Nepal</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html#solutions">Solutions</a></li>
+                        <li><a href="products.html">Products</a></li>
+                        <li><a href="lease.html">Lease</a></li>
+                        <li><a href="buy.html">Buy</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Contact</h4>
+                    <p>Email: info@mawrobotics.com</p>
+                    <p>Phone: +977-1-XXXX-XXXX</p>
+                    <p><a href="https://www.mawvriddhifuturetech.com">www.mawvriddhifuturetech.com</a></p>
+                </div>
+                <div class="footer-section">
+                    <h4>Support</h4>
+                    <ul>
+                        <li><a href="complaint.html">Report Issue</a></li>
+                        <li><a href="feedback.html">Give Feedback</a></li>
+                        <li><a href="servicing.html">Schedule Service</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 MAW Robotics. All rights reserved. | Engineering Nepal's Intelligent Future</p>
+            </div>
+        </div>
+    </footer>
+
+    <style>
+        .page-header {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            color: var(--text-light);
+            padding: 60px 20px;
+            text-align: center;
+            margin-top: 70px;
+        }
+
+        .page-header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+
+        .page-header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+
+        .purchase-info {
+            background: #ffffff;
+            padding: 80px 20px;
+        }
+
+        .purchase-benefits {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .benefit-item {
+            text-align: center;
+            padding: 30px;
+            background: linear-gradient(135deg, var(--light-bg) 0%, #f9f9ff 100%);
+            border-radius: 10px;
+            border: 1px solid var(--border-color);
+            transition: all 0.3s ease;
+        }
+
+        .benefit-item:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow);
+            border-color: var(--secondary-color);
+        }
+
+        .benefit-item .icon {
+            display: inline-block;
+            width: 50px;
+            height: 50px;
+            background: var(--success-color);
+            color: var(--text-light);
+            border-radius: 50%;
+            line-height: 50px;
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+
+        .benefit-item h3 {
+            color: var(--primary-color);
+            margin-bottom: 10px;
+            font-size: 1.1rem;
+        }
+
+        .benefit-item p {
+            color: #666;
+            line-height: 1.6;
+        }
+
+        .buy-form-section {
+            background: linear-gradient(135deg, var(--light-bg) 0%, #f5f9ff 100%);
+            padding: 80px 20px;
+        }
+
+        .buy-form-section h2 {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .form-subtitle {
+            color: var(--primary-color);
+            font-size: 1.3rem;
+            margin-top: 40px;
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid var(--border-color);
+        }
+
+        .financing-section {
+            background: #ffffff;
+            padding: 80px 20px;
+        }
+
+        .financing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .financing-card {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            color: var(--text-light);
+            padding: 30px;
+            border-radius: 10px;
+            text-align: center;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0, 102, 255, 0.3);
+        }
+
+        .financing-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0, 102, 255, 0.5);
+        }
+
+        .financing-card h3 {
+            margin-bottom: 15px;
+            font-size: 1.3rem;
+        }
+
+        .financing-card p {
+            font-size: 0.95rem;
+            opacity: 0.9;
+        }
+
+        .faq-section {
+            background: linear-gradient(135deg, var(--light-bg) 0%, #f5f9ff 100%);
+            padding: 80px 20px;
+        }
+
+        .faq-items {
+            max-width: 900px;
+            margin: 50px auto 0;
+        }
+
+        .faq-item {
+            background: var(--text-light);
+            padding: 30px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            border-left: 4px solid var(--primary-color);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+        }
+
+        .faq-item:hover {
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            border-left-color: var(--secondary-color);
+        }
+
+        .faq-item h4 {
+            color: var(--primary-color);
+            margin-bottom: 15px;
+            font-size: 1.1rem;
+        }
+
+        .faq-item p {
+            color: #666;
+            line-height: 1.7;
+        }
+
+        @media (max-width: 768px) {
+            .financing-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+
+    <script src="js/main.js"></script>
+   <script>
+document.getElementById('buyForm').addEventListener('submit', async function(e) {
+    e.preventDefault()
+
+    // Collect form values
+    const full_name = document.getElementById('buyerName').value
+    const email = document.getElementById('buyerEmail').value
+    const phone = document.getElementById('buyerPhone').value
+    const company = document.getElementById('buyerCompany').value
+    const product_name = document.getElementById('productChoice').value
+    const quantity = document.getElementById('quantity').value
+    const delivery_address = document.getElementById('deliveryAddress').value
+    const delivery_city = document.getElementById('deliveryCity').value
+    const delivery_date = document.getElementById('deliveryDate').value
+    const special_request = document.getElementById('specialRequest').value
+
+    // Collect checked services (checkboxes)
+    const serviceCheckboxes = document.querySelectorAll('input[name="service"]:checked')
+    const additional_services = Array.from(serviceCheckboxes).map(cb => cb.value).join(', ')
+
+    // Collect payment method (radio)
+    const paymentRadio = document.querySelector('input[name="paymentMethod"]:checked')
+    const payment_method = paymentRadio ? paymentRadio.value : ''
+
+    // Show loading state
+    const submitBtn = document.querySelector('#buyForm button[type="submit"]')
+    submitBtn.textContent = 'Submitting...'
+    submitBtn.disabled = true
+
+    try {
+        // Step 1: Save or update customer
+        const { data: customer, error: customerError } = await supabaseClient
+            .from('customers')
+            .upsert(
+                { full_name, email, phone, company },
+                { onConflict: 'email' }
+            )
+            .select()
+            .single()
+
+        if (customerError) throw customerError
+
+        // Step 2: Save order
+        const { error: orderError } = await supabaseClient
+            .from('orders')
+            .insert({
+                customer_id: customer.id,
+                order_type: 'buy',
+                product_name,
+                quantity: parseInt(quantity),
+                delivery_address,
+                delivery_city,
+                delivery_date,
+                payment_method,
+                additional_services,
+                special_request,
+                status: 'pending'
+            })
+
+        if (orderError) throw orderError
+
+        // Success!
+        alert('✅ Order placed successfully! Our team will contact you within 24 hours.')
+        this.reset()
+        setTimeout(() => {
+            window.location.href = 'index.html#home'
+        }, 2000)
+
+    } catch (error) {
+        console.error('Error:', error)
+        alert('❌ Something went wrong: ' + error.message)
+    } finally {
+        submitBtn.textContent = 'Complete Purchase Order'
+        submitBtn.disabled = false
+    }
+})
+</script>
+</body>
+</html>

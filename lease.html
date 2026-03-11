@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Robot Leasing - MAW Robotics</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="/supabase.js"></script>
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-wrapper">
+                <div class="logo">
+                    <h1>MAW <span class="highlight">Robotics</span></h1>
+                    <p class="tagline">Future Tech</p>
+                </div>
+                <ul class="nav-menu">
+                    <li><a href="index.html" class="nav-link">Home</a></li>
+                    <li><a href="index.html#solutions" class="nav-link">Solutions</a></li>
+                    <li><a href="products.html" class="nav-link">Products</a></li>
+                    <li><a href="lease.html" class="nav-link active">Lease</a></li>
+                    <li><a href="buy.html" class="nav-link">Buy</a></li>
+                    <li><a href="inquiry.html" class="nav-link">Inquiry</a></li>
+                    <li><a href="servicing.html" class="nav-link">Servicing</a></li>
+                    <li><a href="complaint.html" class="nav-link">Support</a></li>
+                    <li><a href="feedback.html" class="nav-link">Feedback</a></li>
+                    <li><a href="admin/admin.html" class="nav-link admin-link">Admin</a></li>
+                </ul>
+                <div class="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <h1>Robot Leasing Solutions</h1>
+            <p>Flexible and Cost-Effective Robotics for Your Needs</p>
+        </div>
+    </section>
+
+    <!-- Leasing Info -->
+    <section id="leasing-info" class="leasing-info">
+        <div class="container">
+            <h2>Why Lease Robots?</h2>
+            <div class="benefits-grid">
+                <div class="benefit-card">
+                    <h3>💰 Cost Effective</h3>
+                    <p>Avoid large upfront capital investments. Spread costs over manageable monthly payments.</p>
+                </div>
+                <div class="benefit-card">
+                    <h3>🔄 Flexibility</h3>
+                    <p>Upgrade or change robots as your needs evolve without long-term commitments.</p>
+                </div>
+                <div class="benefit-card">
+                    <h3>🛠️ Maintenance Included</h3>
+                    <p>All maintenance and repair services are covered in the lease agreement.</p>
+                </div>
+                <div class="benefit-card">
+                    <h3>📞 24/7 Support</h3>
+                    <p>Dedicated technical support and rapid response for any issues.</p>
+                </div>
+                <div class="benefit-card">
+                    <h3>📦 Installation Included</h3>
+                    <p>We handle setup, configuration, and integration with your systems.</p>
+                </div>
+                <div class="benefit-card">
+                    <h3>🎓 Training Provided</h3>
+                    <p>Complete training programs for your staff on robot operation.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Leasing Plans -->
+    <section id="leasing-plans" class="leasing-plans">
+        <div class="container">
+            <h2>Leasing Plans</h2>
+            <div class="plans-grid">
+                <div class="plan-card">
+                    <h3>Monthly Plan</h3>
+                    <p class="plan-period">Minimum: 3 months</p>
+                    <ul class="plan-features">
+                        <li>✔ Complete maintenance included</li>
+                        <li>✔ Hardware upgrade options</li>
+                        <li>✔ Priority support</li>
+                        <li>✔ Free relocation (within city)</li>
+                        <li>✔ Flexible cancellation</li>
+                    </ul>
+                    <p class="plan-note">Contact for pricing</p>
+                    <a href="#lease-form" class="btn btn-primary">Request Quote</a>
+                </div>
+                <div class="plan-card featured">
+                    <div class="badge">POPULAR</div>
+                    <h3>Quarterly Plan</h3>
+                    <p class="plan-period">3-12 months</p>
+                    <ul class="plan-features">
+                        <li>✔ 15% discount on monthly rates</li>
+                        <li>✔ Full maintenance & support</li>
+                        <li>✔ Free relocation (anywhere in Nepal)</li>
+                        <li>✔ Insurance coverage</li>
+                        <li>✔ Priority technical team</li>
+                    </ul>
+                    <p class="plan-note">Best value option</p>
+                    <a href="#lease-form" class="btn btn-primary">Request Quote</a>
+                </div>
+                <div class="plan-card">
+                    <h3>Annual Plan</h3>
+                    <p class="plan-period">12+ months</p>
+                    <ul class="plan-features">
+                        <li>✔ 25% discount on monthly rates</li>
+                        <li>✔ Comprehensive maintenance</li>
+                        <li>✔ Unlimited relocation</li>
+                        <li>✔ Advanced insurance</li>
+                        <li>✔ Custom modifications allowed</li>
+                    </ul>
+                    <p class="plan-note">Maximum savings</p>
+                    <a href="#lease-form" class="btn btn-primary">Request Quote</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Lease Request Form -->
+    <section id="lease-form" class="lease-form-section">
+        <div class="container">
+            <h2>Request Robot Lease</h2>
+            <form id="leaseForm" class="form-container">
+                <!-- Customer Information -->
+                <h3 class="form-subtitle">Customer Information</h3>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="customerName">Full Name *</label>
+                        <input type="text" id="customerName" name="customerName" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="companyName">Company Name *</label>
+                        <input type="text" id="companyName" name="companyName" required>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="email">Email Address *</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Contact Number *</label>
+                        <input type="tel" id="phone" name="phone" required>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="address">Business Address *</label>
+                    <input type="text" id="address" name="address" required>
+                </div>
+
+                <!-- Robot Selection -->
+                <h3 class="form-subtitle">Robot Selection</h3>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="robotType">Which Robot Do You Need? *</label>
+                        <select id="robotType" name="robotType" required>
+                            <option value="">-- Select Robot --</option>
+                            <option value="UNITREE G1 Air">UNITREE G1 Air</option>
+                            <option value="UNITREE G1 EDU">UNITREE G1 EDU</option>
+                            <option value="UNITREE Go2 PRO">UNITREE Go2 PRO</option>
+                            <option value="UNITREE Go2 X">UNITREE Go2 X</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="quantity">Number of Units *</label>
+                        <input type="number" id="quantity" name="quantity" min="1" required>
+                    </div>
+                </div>
+
+                <!-- Lease Details -->
+                <h3 class="form-subtitle">Lease Details</h3>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="leasePeriod">Lease Duration *</label>
+                        <select id="leasePeriod" name="leasePeriod" required>
+                            <option value="">-- Select Duration --</option>
+                            <option value="3 months">3 Months</option>
+                            <option value="6 months">6 Months</option>
+                            <option value="12 months">12 Months</option>
+                            <option value="24 months">24 Months</option>
+                            <option value="custom">Custom Duration</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="startDate">Desired Start Date *</label>
+                        <input type="date" id="startDate" name="startDate" required>
+                    </div>
+                </div>
+
+                <!-- Lease Purpose -->
+                <h3 class="form-subtitle">Lease Purpose</h3>
+                <div class="form-group">
+                    <label for="purpose">What is the primary purpose? *</label>
+                    <select id="purpose" name="purpose" required>
+                        <option value="">-- Select Purpose --</option>
+                        <option value="Industrial Automation">Industrial Automation</option>
+                        <option value="Research/Development">Research & Development</option>
+                        <option value="Delivery Service">Delivery Service</option>
+                        <option value="Education/Training">Education & Training</option>
+                        <option value="Inspection/Monitoring">Inspection & Monitoring</option>
+                        <option value="Entertainment/Events">Entertainment & Events</option>
+                        <option value="Other">Other</option>
+                    </select>
+                </div>
+
+                <!-- Location -->
+                <h3 class="form-subtitle">Operational Location</h3>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="operatingCity">Operating City *</label>
+                        <input type="text" id="operatingCity" name="operatingCity" placeholder="e.g., Kathmandu" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="relocation">External Relocation Needed?</label>
+                        <select id="relocation" name="relocation">
+                            <option value="No">No - Same City</option>
+                            <option value="Yes - Within Nepal">Yes - Within Nepal</option>
+                            <option value="Yes - International">Yes - International</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Additional Details -->
+                <h3 class="form-subtitle">Additional Information</h3>
+                <div class="form-group">
+                    <label for="specificRequirements">Specific Requirements or Customizations</label>
+                    <textarea id="specificRequirements" name="specificRequirements" placeholder="Describe any special needs or modifications required..."></textarea>
+                </div>
+
+                <div class="form-checkbox">
+                    <input type="checkbox" id="agreeTerms" name="agreeTerms" required>
+                    <label for="agreeTerms">I agree to the lease terms and conditions *</label>
+                </div>
+
+                <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 20px;">Submit Lease Request</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>MAW Robotics</h4>
+                    <p>Engineering Nepal's Intelligent Future</p>
+                    <p class="footer-location">Location: Kathmandu, Nepal</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html#solutions">Solutions</a></li>
+                        <li><a href="products.html">Products</a></li>
+                        <li><a href="lease.html">Lease</a></li>
+                        <li><a href="buy.html">Buy</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Contact</h4>
+                    <p>Email: info@mawrobotics.com</p>
+                    <p>Phone: +977-1-XXXX-XXXX</p>
+                    <p><a href="https://www.mawvriddhifuturetech.com">www.mawvriddhifuturetech.com</a></p>
+                </div>
+                <div class="footer-section">
+                    <h4>Support</h4>
+                    <ul>
+                        <li><a href="complaint.html">Report Issue</a></li>
+                        <li><a href="feedback.html">Give Feedback</a></li>
+                        <li><a href="servicing.html">Schedule Service</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 MAW Robotics. All rights reserved. | Engineering Nepal's Intelligent Future</p>
+            </div>
+        </div>
+    </footer>
+
+    <style>
+        .page-header {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            color: var(--text-light);
+            padding: 60px 20px;
+            text-align: center;
+            margin-top: 70px;
+        }
+
+        .page-header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+
+        .page-header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+
+        .leasing-info {
+            background: #ffffff;
+            padding: 80px 20px;
+        }
+
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .benefit-card {
+            background: linear-gradient(135deg, var(--light-bg) 0%, #f9f9ff 100%);
+            padding: 30px;
+            border-radius: 10px;
+            border: 1px solid var(--border-color);
+            transition: all 0.3s ease;
+        }
+
+        .benefit-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow);
+                border-color: var(--secondary-color);
+        }
+
+        .benefit-card h3 {
+            color: var(--primary-color);
+            margin-bottom: 15px;
+            font-size: 1.2rem;
+        }
+
+        .benefit-card p {
+            color: #666;
+            line-height: 1.6;
+        }
+
+        .leasing-plans {
+            background: linear-gradient(135deg, var(--light-bg) 0%, #f5f9ff 100%);
+            padding: 80px 20px;
+        }
+
+        .plans-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            margin-top: 50px;
+        }
+
+        .plan-card {
+            background: var(--text-light);
+            padding: 40px;
+            border-radius: 10px;
+            border: 2px solid var(--border-color);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .plan-card.featured {
+            border-color: var(--primary-color);
+            transform: scale(1.05);
+            box-shadow: 0 10px 40px rgba(0, 102, 255, 0.2);
+        }
+
+        .plan-card:hover {
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .badge {
+            position: absolute;
+            top: -15px;
+            right: 20px;
+            background: var(--accent-color);
+            color: var(--text-light);
+            padding: 8px 20px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+
+        .plan-card h3 {
+            color: var(--primary-color);
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+        }
+
+        .plan-period {
+            color: var(--secondary-color);
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+
+        .plan-features {
+            list-style: none;
+            margin: 25px 0;
+        }
+
+        .plan-features li {
+            padding: 12px 0;
+            color: #555;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .plan-features li:last-child {
+            border-bottom: none;
+        }
+
+        .plan-note {
+            color: var(--primary-color);
+            font-weight: 600;
+            margin: 20px 0;
+            font-style: italic;
+        }
+
+        .plan-card .btn {
+            width: 100%;
+            margin-top: 20px;
+        }
+
+        .lease-form-section {
+            background: #ffffff;
+            padding: 80px 20px;
+        }
+
+        .lease-form-section h2 {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .form-subtitle {
+            color: var(--primary-color);
+            font-size: 1.3rem;
+            margin-top: 40px;
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid var(--border-color);
+        }
+
+        @media (max-width: 768px) {
+            .plan-card.featured {
+                transform: scale(1);
+            }
+
+            .plans-grid {
+                gap: 20px;
+            }
+
+            .plan-card {
+                padding: 30px;
+            }
+        }
+    </style>
+
+    <script src="js/main.js"></script>
+    <script>
+document.getElementById('leaseForm').addEventListener('submit', async function(e) {
+    e.preventDefault()
+
+    // Collect form values
+    const full_name = document.getElementById('customerName').value
+    const company = document.getElementById('companyName').value
+    const email = document.getElementById('email').value
+    const phone = document.getElementById('phone').value
+    const address = document.getElementById('address').value
+    const product_name = document.getElementById('robotType').value
+    const quantity = document.getElementById('quantity').value
+    const lease_period = document.getElementById('leasePeriod').value
+    const start_date = document.getElementById('startDate').value
+    const purpose = document.getElementById('purpose').value
+    const operating_city = document.getElementById('operatingCity').value
+    const relocation = document.getElementById('relocation').value
+    const specific_requirements = document.getElementById('specificRequirements').value
+
+    // Show loading state
+    const submitBtn = document.querySelector('#leaseForm button[type="submit"]')
+    submitBtn.textContent = 'Submitting...'
+    submitBtn.disabled = true
+
+    try {
+        // Step 1: Save or update customer
+        const { data: customer, error: customerError } = await supabaseClient
+            .from('customers')
+            .upsert(
+                { full_name, email, phone, company, address },
+                { onConflict: 'email' }
+            )
+            .select()
+            .single()
+
+        if (customerError) throw customerError
+
+        // Step 2: Save lease order
+        const { error: orderError } = await supabaseClient
+            .from('orders')
+            .insert({
+                customer_id: customer.id,
+                order_type: 'lease',
+                product_name,
+                quantity: parseInt(quantity),
+                lease_period,
+                start_date,
+                purpose,
+                operating_city,
+                relocation,
+                specific_requirements,
+                status: 'pending'
+            })
+
+        if (orderError) throw orderError
+
+        // Success!
+        alert('✅ Lease request submitted! Our team will contact you within 24 hours.')
+        this.reset()
+        setTimeout(() => {
+            window.location.href = 'index.html#solutions'
+        }, 2000)
+
+    } catch (error) {
+        console.error('Error:', error)
+        alert('❌ Something went wrong: ' + error.message)
+    } finally {
+        submitBtn.textContent = 'Submit Lease Request'
+        submitBtn.disabled = false
+    }
+})
+</script>
+</body>
+</html>

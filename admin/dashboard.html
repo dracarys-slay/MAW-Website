@@ -1,0 +1,337 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Admin Dashboard | MAW Robotics</title>
+<link rel="stylesheet" href="../css/style.css">
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="../supabase.js"></script>
+<style>
+body{margin:0;font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif;background:#f4f7fd;color:#15345d}
+.wrap{display:grid;grid-template-columns:240px 1fr;min-height:100vh}
+.side{background:#0a2654;color:#fff;padding:16px}
+.side h1{font-size:1.1rem;margin:0 0 4px}
+.side p{margin:0 0 14px;color:#b8cae9;font-size:.9rem}
+.menu{display:grid;gap:6px}
+.menu button,.logout{border:1px solid rgba(255,255,255,.18);background:transparent;color:#fff;padding:9px 10px;border-radius:8px;text-align:left;cursor:pointer}
+.menu button.active,.menu button:hover{background:rgba(255,255,255,.15)}
+.logout{margin-top:14px;color:#ffd7d7;border-color:#ffbcbc}
+.main{padding:18px}
+.top{background:#fff;border:1px solid #d7e2f5;border-radius:10px;padding:14px;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.top h2{margin:0 0 6px;font-size:1.2rem}
+.meta{margin:0;font-size:.88rem;color:#58709a}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin:14px 0}
+.stat{background:#fff;border:1px solid #d7e2f5;border-radius:10px;padding:12px}.stat p{margin:0;color:#58709a;font-size:.85rem}.stat strong{display:block;margin-top:6px;color:#0d4db2;font-size:1.4rem}
+.panel{background:#fff;border:1px solid #d7e2f5;border-radius:10px;padding:12px}
+.controls{display:flex;flex-wrap:wrap;gap:8px;justify-content:space-between;align-items:center;margin-bottom:10px}
+.controls h3{margin:0;font-size:1.05rem}
+.controls input{border:1px solid #c4d4ef;border-radius:7px;padding:8px 10px;min-width:220px}
+.controls button,.btn-link{border:1px solid #b6c9ea;background:#edf3ff;color:#16396f;border-radius:7px;padding:8px 10px;font-weight:700;cursor:pointer;text-decoration:none}
+.controls button.primary{background:#0d5ecc;color:#fff;border-color:#0d5ecc}
+.table-wrap{overflow:auto;border:1px solid #d7e2f5;border-radius:8px}
+table{width:100%;border-collapse:collapse;min-width:760px}th,td{padding:9px;border-bottom:1px solid #e0e8f6;text-align:left;font-size:.9rem}th{background:#eef4ff;font-size:.82rem;text-transform:uppercase;color:#12396f}
+tr:nth-child(even) td{background:#fbfdff}
+.actions{display:flex;gap:6px}.actions button{border:1px solid #c4d5f2;background:#f1f6ff;border-radius:6px;padding:5px 7px;font-size:.78rem;cursor:pointer;font-weight:700}.actions .del{border-color:#efc3c3;background:#fff1f1;color:#8a2e2e}
+.empty{text-align:center;color:#6880aa;padding:18px}
+.hidden{display:none}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:12px}
+.card{border:1px solid #d7e2f5;background:#f9fbff;border-radius:8px;padding:10px}
+.card h4{margin:0 0 8px}.card p{margin:6px 0;color:#244b80;font-size:.9rem}
+.form{display:grid;gap:8px}.form label{font-size:.88rem;font-weight:700}.form input{border:1px solid #c4d4ef;border-radius:7px;padding:8px 10px}
+.msg{display:none;margin-top:8px;padding:8px 10px;border-radius:7px;font-size:.88rem}.msg.ok{display:block;background:#eefdf1;border:1px solid #b9ebc6;color:#1a5d2b}.msg.err{display:block;background:#fff2f2;border:1px solid #efc3c3;color:#7f2b2b}
+.modal{display:none;position:fixed;inset:0;background:rgba(6,20,48,.58);align-items:center;justify-content:center;padding:12px}.modal.show{display:flex}.box{background:#fff;border:1px solid #d4def0;border-radius:10px;width:min(650px,95vw);max-height:85vh;overflow:auto}.box-head{display:flex;justify-content:space-between;align-items:center;padding:10px 12px;border-bottom:1px solid #dfe8f6}.box-head h4{margin:0}.box-head button{border:none;background:transparent;font-size:1.3rem;cursor:pointer}.box-body{padding:10px 12px}.box-body p{margin:0 0 8px;color:#285187}
+@media (max-width:900px){.wrap{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<aside class="side">
+<h1>MAW Admin Portal</h1>
+<p>MAW Future Tech</p>
+<div id="menu" class="menu"></div>
+<button id="logoutBtn" class="logout" type="button">Logout</button>
+</aside>
+<main class="main">
+<header class="top">
+<div>
+<h2>MAW Robotics Administration</h2>
+<p class="meta">Admin login is protected by credentials</p>
+</div>
+<div>
+<p id="metaAdmin" class="meta">Admin: -</p>
+<p id="metaLogin" class="meta">Login: -</p>
+</div>
+</header>
+<section id="stats" class="stats"></section>
+<section id="content"></section>
+</main>
+</div>
+
+<div id="modal" class="modal">
+<div class="box">
+<div class="box-head"><h4>Submission Details</h4><button id="closeModal" type="button">x</button></div>
+<div id="modalBody" class="box-body"></div>
+</div>
+</div>
+
+<script>
+// ── Auth Guard ──────────────────────────────────────────────
+async function guard() {
+    const { data: { session } } = await supabaseClient.auth.getSession()
+    if (!session) { location.href = 'admin.html'; return false }
+    document.getElementById('metaAdmin').textContent = `Admin: ${session.user.email}`
+    document.getElementById('metaLogin').textContent = `Login: ${new Date().toLocaleString()}`
+    return true
+}
+
+// ── Menu definitions ────────────────────────────────────────
+const defs = [
+    { id: 'dashboard',  label: 'Dashboard',        table: null },
+    { id: 'purchases',  label: 'Purchase Orders',   table: null,         filter: null,                    cols: [['buyerName','Name'],['productChoice','Product'],['quantity','Qty'],['deliveryCity','City'],['paymentMethod','Payment'],['timestamp','Date']] },
+    { id: 'leases',     label: 'Lease Requests',    table: null,         filter: null,                    cols: [['customerName','Name'],['companyName','Company'],['robotType','Robot'],['leasePeriod','Duration'],['quantity','Qty'],['timestamp','Date']] },
+    { id: 'inquiries',  label: 'Inquiries',         table: 'inquiries', filter: null,                   cols: [['subject','Category'],['product_interest','Product'],['contact_method','Contact Via'],['status','Status'],['created_at','Date']] },
+    { id: 'servicing',  label: 'Servicing',         table: 'servicing', filter: null,                   cols: [['robot_model','Robot'],['service_type','Service'],['preferred_date','Date'],['service_location','Location'],['service_status','Status'],['created_at','Submitted']] },
+    { id: 'complaints', label: 'Complaints',        table: 'complaints',filter: null,                   cols: [['complaint_type','Category'],['product_name','Product'],['desired_resolution','Resolution'],['status','Status'],['created_at','Date']] },
+    { id: 'feedback',   label: 'Feedback',          table: 'feedback',  filter: null,                   cols: [['category','Category'],['rating','Rating'],['recommend','Recommend'],['created_at','Date']] },
+    { id: 'customers',  label: 'Customers',         table: 'customers', filter: null,                   cols: [['full_name','Name'],['email','Email'],['phone','Phone'],['company','Company'],['created_at','Joined']] },
+    { id: 'settings',   label: 'Settings',          table: null }
+]
+
+let active = 'dashboard'
+let DATA = {}
+
+// ── Load all data from Supabase ──────────────────────────────
+async function loadAll() {
+    DATA.purchases = []
+    DATA.leases = []
+
+    try {
+        const response = await fetch('/api/submissions', { cache: 'no-store' })
+        if (response.ok) {
+            const payload = await response.json()
+            DATA.purchases = payload.buyForm || []
+            DATA.leases = payload.leaseForm || []
+        }
+    } catch (error) {
+        DATA.purchases = []
+        DATA.leases = []
+    }
+
+    for (const d of defs) {
+        if (!d.table) continue
+        let query = supabaseClient
+            .from(d.table)
+            .select('*, customers(full_name, email, phone, company)')
+            .order('created_at', { ascending: false })
+
+        if (d.filter) query = query.eq(d.filter[0], d.filter[1])
+
+        const { data, error } = await query
+        if (!error) DATA[d.id] = data || []
+    }
+}
+
+function h(v) { return String(v ?? '').replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;') }
+
+function formatVal(val) {
+    if (!val) return '-'
+    // Format dates
+    if (String(val).match(/^\d{4}-\d{2}-\d{2}T/)) return new Date(val).toLocaleString()
+    if (String(val).match(/^\d{4}-\d{2}-\d{2}$/)) return new Date(val).toLocaleDateString()
+    return val
+}
+
+// ── Render Menu ──────────────────────────────────────────────
+function renderMenu() {
+    document.getElementById('menu').innerHTML = defs.map(d =>
+        `<button type="button" class="${d.id === active ? 'active' : ''}" onclick="active='${d.id}';render()">${h(d.label)}</button>`
+    ).join('')
+}
+
+// ── Render Stats ─────────────────────────────────────────────
+function renderStats() {
+    document.getElementById('stats').innerHTML = defs.filter(d => d.table).map(d =>
+        `<article class="stat"><p>${h(d.label)}</p><strong>${(DATA[d.id] || []).length}</strong></article>`
+    ).join('')
+}
+
+// ── Table Section ─────────────────────────────────────────────
+function tableSection(d) {
+    const data = DATA[d.id] || []
+    const head = d.cols.map(c => `<th>${h(c[1])}</th>`).join('')
+    const body = data.map((r, i) => {
+        const customer = r.customers || {}
+        const cells = d.cols.map(c => `<td>${h(formatVal(r[c[0]] || customer[c[0]] || '-'))}</td>`).join('')
+        return `<tr data-i="${i}">${cells}<td><div class="actions">
+            <button onclick="showDetail('${d.id}',${i})">View</button>
+            <button class="del" onclick="deleteRec('${d.id}','${d.table}',${i})">Delete</button>
+        </div></td></tr>`
+    }).join('')
+
+    return `<section id="s-${d.id}" class="panel ${active === d.id ? '' : 'hidden'}">
+        <div class="controls">
+            <h3>${h(d.label)}</h3>
+            <div class="actions">
+                <input type="search" placeholder="Search..." oninput="filterTable('${d.id}',this.value)">
+                <button class="primary" onclick="exportCsv('${d.id}')">Export CSV</button>
+            </div>
+        </div>
+        ${data.length
+            ? `<div class="table-wrap"><table><thead><tr>${head}<th>Actions</th></tr></thead><tbody>${body}</tbody></table></div>`
+            : '<div class="empty">No records yet.</div>'
+        }
+    </section>`
+}
+
+// ── Dashboard Section ─────────────────────────────────────────
+function sectionDashboard() {
+    return `<section class="panel ${active === 'dashboard' ? '' : 'hidden'}">
+        <div class="controls"><h3>Dashboard Overview</h3>
+        <a class="btn-link" href="../index.html" target="_blank">Open Website</a></div>
+        <p class="meta">Manage all customer submissions from this panel. All data is live from Supabase.</p>
+    </section>`
+}
+
+// ── Settings Section ──────────────────────────────────────────
+function sectionSettings() {
+    return `<section id="s-settings" class="panel ${active === 'settings' ? '' : 'hidden'}">
+        <div class="controls"><h3>Admin Settings</h3></div>
+        <div class="grid">
+            <article class="card">
+                <h4>Update Password</h4>
+                <form class="form" onsubmit="updatePassword(event)">
+                    <label>New Password</label>
+                    <input id="newPass" type="password" minlength="8" required>
+                    <label>Confirm Password</label>
+                    <input id="newPass2" type="password" required>
+                    <button class="primary" type="submit">Update Password</button>
+                </form>
+                <div id="settingsMsg" class="msg"></div>
+            </article>
+        </div>
+    </section>`
+}
+
+// ── Show Detail Modal ─────────────────────────────────────────
+function showDetail(defId, i) {
+    const r = (DATA[defId] || [])[i]
+    if (!r) return
+    const customer = r.customers || {}
+    let html = ''
+    if (customer.full_name) {
+        html += `<p><strong>👤 Customer:</strong> ${h(customer.full_name)}</p>`
+        html += `<p><strong>📧 Email:</strong> ${h(customer.email)}</p>`
+        html += `<p><strong>📞 Phone:</strong> ${h(customer.phone)}</p>`
+        if (customer.company) html += `<p><strong>🏢 Company:</strong> ${h(customer.company)}</p>`
+        html += `<hr style="margin:10px 0;border-color:#e0e8f6">`
+    }
+    const skip = ['customer_id', 'customers', 'id']
+    Object.entries(r).filter(([k]) => !skip.includes(k)).forEach(([k, v]) => {
+        html += `<p><strong>${h(k.replaceAll('_',' '))}:</strong> ${h(formatVal(v))}</p>`
+    })
+    document.getElementById('modalBody').innerHTML = html
+    document.getElementById('modal').classList.add('show')
+}
+
+// ── Delete Record ─────────────────────────────────────────────
+async function deleteRec(defId, table, i) {
+    if (!confirm('Delete this record permanently?')) return
+
+    if (defId === 'purchases' || defId === 'leases') {
+        const formId = defId === 'purchases' ? 'buyForm' : 'leaseForm'
+        const response = await fetch(`/api/submissions/${formId}/${i}`, { method: 'DELETE' })
+        if (!response.ok) {
+            alert('Error deleting record from server submissions.')
+            return
+        }
+        await loadAll()
+        render()
+        return
+    }
+
+    const r = (DATA[defId] || [])[i]
+    if (!r) return
+    const { error } = await supabaseClient.from(table).delete().eq('id', r.id)
+    if (error) { alert('Error deleting: ' + error.message); return }
+    await loadAll()
+    render()
+}
+
+// ── Search Filter ─────────────────────────────────────────────
+function filterTable(defId, term) {
+    const sec = document.getElementById(`s-${defId}`)
+    if (!sec) return
+    sec.querySelectorAll('tbody tr').forEach(tr => {
+        tr.style.display = tr.innerText.toLowerCase().includes(term.toLowerCase()) ? '' : 'none'
+    })
+}
+
+// ── Export CSV ────────────────────────────────────────────────
+function exportCsv(defId) {
+    const d = defs.find(x => x.id === defId)
+    const data = DATA[defId] || []
+    if (!data.length) { alert('No data to export.'); return }
+    const useCustomerPrefix = d.id !== 'purchases' && d.id !== 'leases'
+    const hdr = [
+        ...(useCustomerPrefix ? ['Customer Name', 'Email'] : []),
+        ...d.cols.map(c => c[1])
+    ].join(',')
+    const lines = data.map(r => {
+        const customer = r.customers || {}
+        const base = useCustomerPrefix ? [`"${customer.full_name || ''}"`, `"${customer.email || ''}"`] : []
+        const rest = d.cols.map(c => `"${formatVal(r[c[0]] || customer[c[0]] || '')}"`)
+        return [...base, ...rest].join(',')
+    })
+    const csv = [hdr, ...lines].join('\n')
+    const a = document.createElement('a')
+    a.href = 'data:text/csv;charset=utf-8,' + encodeURIComponent(csv)
+    a.download = `MAW_${d.label.replaceAll(' ', '_')}_${new Date().toISOString().slice(0,10)}.csv`
+    a.click()
+}
+
+// ── Update Password ───────────────────────────────────────────
+async function updatePassword(e) {
+    e.preventDefault()
+    const p1 = document.getElementById('newPass').value
+    const p2 = document.getElementById('newPass2').value
+    const msg = document.getElementById('settingsMsg')
+    if (p1 !== p2) { msg.className = 'msg err'; msg.textContent = 'Passwords do not match.'; return }
+    const { error } = await supabaseClient.auth.updateUser({ password: p1 })
+    if (error) { msg.className = 'msg err'; msg.textContent = error.message; return }
+    msg.className = 'msg ok'
+    msg.textContent = 'Password updated successfully!'
+}
+
+// ── Main Render ───────────────────────────────────────────────
+function render() {
+    renderMenu()
+    renderStats()
+    const tables = defs.filter(d => d.table).map(tableSection).join('')
+    document.getElementById('content').innerHTML = sectionDashboard() + tables + sectionSettings()
+}
+
+// ── Logout ────────────────────────────────────────────────────
+document.getElementById('logoutBtn').onclick = async () => {
+    if (!confirm('Logout from admin dashboard?')) return
+    await supabaseClient.auth.signOut()
+    location.href = 'admin.html'
+}
+
+document.getElementById('closeModal').onclick = () => document.getElementById('modal').classList.remove('show')
+document.getElementById('modal').addEventListener('click', e => { if (e.target.id === 'modal') document.getElementById('modal').classList.remove('show') })
+
+// ── Init ──────────────────────────────────────────────────────
+async function init() {
+    const ok = await guard()
+    if (!ok) return
+    await loadAll()
+    render()
+    // Auto refresh every 30 seconds
+    setInterval(async () => { await loadAll(); render() }, 30000)
+}
+
+init()
+</script>
+</body>
+</html>

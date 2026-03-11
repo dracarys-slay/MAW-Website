@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Robot Servicing - MAW Robotics</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="/supabase.js"></script>
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-wrapper">
+                <div class="logo">
+                    <h1>MAW <span class="highlight">Robotics</span></h1>
+                    <p class="tagline">Future Tech</p>
+                </div>
+                <ul class="nav-menu">
+                    <li><a href="index.html" class="nav-link">Home</a></li>
+                    <li><a href="index.html#solutions" class="nav-link">Solutions</a></li>
+                    <li><a href="products.html" class="nav-link">Products</a></li>
+                    <li><a href="lease.html" class="nav-link">Lease</a></li>
+                    <li><a href="buy.html" class="nav-link">Buy</a></li>
+                    <li><a href="inquiry.html" class="nav-link">Inquiry</a></li>
+                    <li><a href="servicing.html" class="nav-link active">Servicing</a></li>
+                    <li><a href="complaint.html" class="nav-link">Support</a></li>
+                    <li><a href="feedback.html" class="nav-link">Feedback</a></li>
+                    <li><a href="admin/admin.html" class="nav-link admin-link">Admin</a></li>
+                </ul>
+                <div class="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <h1>Robot Servicing & Maintenance</h1>
+            <p>Scheduled Maintenance for Optimal Performance</p>
+        </div>
+    </section>
+
+    <!-- Servicing Info -->
+    <section id="servicing-info" class="servicing-info">
+        <div class="container">
+            <h2>Why Regular Servicing Matters</h2>
+            <div class="benefits-grid">
+                <div class="benefit-card">
+                    <h3>⚡ Peak Performance</h3>
+                    <p>Regular maintenance ensures your robot operates at maximum efficiency</p>
+                </div>
+                <div class="benefit-card">
+                    <h3>🛡️ Extended Lifespan</h3>
+                    <p>Preventive care extends the operational life of your equipment</p>
+                </div>
+                <div class="benefit-card">
+                    <h3>🔒 Reliability</h3>
+                    <p>Minimize downtime with scheduled preventive maintenance</p>
+                </div>
+                <div class="benefit-card">
+                    <h3>💾 Warranty Support</h3>
+                    <p>Regular servicing helps maintain warranty coverage</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Servicing Form -->
+    <section id="service-form" class="service-form-section">
+        <div class="container">
+            <h2>Schedule Servicing</h2>
+            <form id="servicingForm" class="form-container">
+                <h3 class="form-subtitle">Your Information</h3>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="serviceName">Full Name *</label>
+                        <input type="text" id="serviceName" name="serviceName" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="serviceEmail">Email Address *</label>
+                        <input type="email" id="serviceEmail" name="serviceEmail" required>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="servicePhone">Contact Number *</label>
+                        <input type="tel" id="servicePhone" name="servicePhone" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="serviceCompany">Company Name *</label>
+                        <input type="text" id="serviceCompany" name="serviceCompany" required>
+                    </div>
+                </div>
+
+                <h3 class="form-subtitle">Robot Information</h3>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="robotModel">Robot Model *</label>
+                        <select id="robotModel" name="robotModel" required>
+                            <option value="">-- Select Model --</option>
+                            <option value="UNITREE G1 Air">UNITREE G1 Air</option>
+                            <option value="UNITREE G1 EDU">UNITREE G1 EDU</option>
+                            <option value="UNITREE Go2 PRO">UNITREE Go2 PRO</option>
+                            <option value="UNITREE Go2 X">UNITREE Go2 X</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="serialNumber">Serial Number *</label>
+                        <input type="text" id="serialNumber" name="serialNumber" placeholder="Find on your robot's label" required>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="purchaseDate">Date of Purchase *</label>
+                    <input type="date" id="purchaseDate" name="purchaseDate" required>
+                </div>
+
+                <h3 class="form-subtitle">Service Request</h3>
+                <div class="form-group">
+                    <label for="serviceType">Type of Service Required *</label>
+                    <select id="serviceType" name="serviceType" required>
+                        <option value="">-- Select Service Type --</option>
+                        <option value="Regular Maintenance">Regular Maintenance</option>
+                        <option value="Annual Inspection">Annual Inspection</option>
+                        <option value="Battery Replacement">Battery Replacement</option>
+                        <option value="Repair/Troubleshooting">Repair/Troubleshooting</option>
+                        <option value="Software Update">Software Update</option>
+                        <option value="Component Replacement">Component Replacement</option>
+                        <option value="Calibration">Calibration</option>
+                        <option value="Emergency Service">Emergency Service</option>
+                    </select>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="preferredDate">Preferred Service Date *</label>
+                        <input type="date" id="preferredDate" name="preferredDate" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="preferredTime">Preferred Time</label>
+                        <input type="time" id="preferredTime" name="preferredTime">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="serviceLocation">Service Location *</label>
+                    <input type="text" id="serviceLocation" name="serviceLocation" placeholder="Where should we perform the service?" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="issues">Current Issues or Concerns</label>
+                    <textarea id="issues" name="issues" placeholder="Describe any problems or maintenance needs..."></textarea>
+                </div>
+
+                <div class="form-checkbox">
+                    <input type="checkbox" id="agreeService" name="agreeService" checked>
+                    <label for="agreeService">I agree to the service terms and conditions</label>
+                </div>
+
+                <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 20px;">Schedule Service</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Service Packages -->
+    <section id="packages" class="packages-section">
+        <div class="container">
+            <h2>Service Packages</h2>
+            <div class="packages-grid">
+                <div class="package-card">
+                    <h3>Basic Maintenance</h3>
+                    <p class="price">Every 6 months</p>
+                    <ul>
+                        <li>✓ Oil & Lubricant Check</li>
+                        <li>✓ Sensor Cleaning</li>
+                        <li>✓ Battery Health Check</li>
+                        <li>✓ Software Verification</li>
+                    </ul>
+                </div>
+                <div class="package-card featured">
+                    <h3>Comprehensive Service</h3>
+                    <p class="price">Every 12 months</p>
+                    <ul>
+                        <li>✓ Complete System Check</li>
+                        <li>✓ Parts Replacement (if needed)</li>
+                        <li>✓ Performance Optimization</li>
+                        <li>✓ Full Software Update</li>
+                    </ul>
+                </div>
+                <div class="package-card">
+                    <h3>Premium Plus</h3>
+                    <p class="price">24/7 Support</p>
+                    <ul>
+                        <li>✓ Emergency Response</li>
+                        <li>✓ Priority Service</li>
+                        <li>✓ Spare Parts On Hand</li>
+                        <li>✓ Remote Diagnostics</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>MAW Robotics</h4>
+                    <p>Engineering Nepal's Intelligent Future</p>
+                    <p class="footer-location">Location: Kathmandu, Nepal</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html#solutions">Solutions</a></li>
+                        <li><a href="products.html">Products</a></li>
+                        <li><a href="lease.html">Lease</a></li>
+                        <li><a href="buy.html">Buy</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Contact</h4>
+                    <p>Email: info@mawrobotics.com</p>
+                    <p>Phone: +977-1-XXXX-XXXX</p>
+                    <p><a href="https://www.mawvriddhifuturetech.com">www.mawvriddhifuturetech.com</a></p>
+                </div>
+                <div class="footer-section">
+                    <h4>Support</h4>
+                    <ul>
+                        <li><a href="complaint.html">Report Issue</a></li>
+                        <li><a href="feedback.html">Give Feedback</a></li>
+                        <li><a href="servicing.html">Schedule Service</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 MAW Robotics. All rights reserved. | Engineering Nepal's Intelligent Future</p>
+            </div>
+        </div>
+    </footer>
+
+    <style>
+        .page-header {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            color: var(--text-light);
+            padding: 60px 20px;
+            text-align: center;
+            margin-top: 70px;
+        }
+
+        .page-header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+
+        .page-header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+
+        .servicing-info {
+            background: #ffffff;
+            padding: 80px 20px;
+        }
+
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .benefit-card {
+            background: linear-gradient(135deg, var(--light-bg) 0%, #f9f9ff 100%);
+            padding: 30px;
+            border-radius: 10px;
+            border: 1px solid var(--border-color);
+            transition: all 0.3s ease;
+        }
+
+        .benefit-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow);
+            border-color: var(--secondary-color);
+        }
+
+        .benefit-card h3 {
+            color: var(--primary-color);
+            margin-bottom: 15px;
+        }
+
+        .benefit-card p {
+            color: #666;
+        }
+
+        .service-form-section {
+            background: linear-gradient(135deg, var(--light-bg) 0%, #f5f9ff 100%);
+            padding: 80px 20px;
+        }
+
+        .service-form-section h2 {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .form-subtitle {
+            color: var(--primary-color);
+            font-size: 1.3rem;
+            margin-top: 40px;
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid var(--border-color);
+        }
+
+        .packages-section {
+            background: #ffffff;
+            padding: 80px 20px;
+        }
+
+        .packages-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .package-card {
+            background: linear-gradient(135deg, var(--light-bg) 0%, #f9f9ff 100%);
+            padding: 30px;
+            border-radius: 10px;
+            border: 2px solid var(--border-color);
+            transition: all 0.3s ease;
+        }
+
+        .package-card.featured {
+            border-color: var(--primary-color);
+            transform: scale(1.05);
+            box-shadow: var(--shadow);
+        }
+
+        .package-card:hover {
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .package-card h3 {
+            color: var(--primary-color);
+            margin-bottom: 10px;
+            font-size: 1.3rem;
+        }
+
+        .package-card .price {
+            color: var(--secondary-color);
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+
+        .package-card ul {
+            list-style: none;
+        }
+
+        .package-card li {
+            padding: 10px 0;
+            color: #555;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .package-card li:last-child {
+            border-bottom: none;
+        }
+    </style>
+
+    <script src="js/main.js"></script>
+    <script>
+document.getElementById('servicingForm').addEventListener('submit', async function(e) {
+    e.preventDefault()
+
+    // Collect form values
+    const full_name = document.getElementById('serviceName').value
+    const email = document.getElementById('serviceEmail').value
+    const phone = document.getElementById('servicePhone').value
+    const company = document.getElementById('serviceCompany').value
+    const robot_model = document.getElementById('robotModel').value
+    const serial_number = document.getElementById('serialNumber').value
+    const purchase_date = document.getElementById('purchaseDate').value
+    const service_type = document.getElementById('serviceType').value
+    const preferred_date = document.getElementById('preferredDate').value
+    const preferred_time = document.getElementById('preferredTime').value
+    const service_location = document.getElementById('serviceLocation').value
+    const issues = document.getElementById('issues').value
+
+    // Show loading state
+    const submitBtn = document.querySelector('#servicingForm button[type="submit"]')
+    submitBtn.textContent = 'Submitting...'
+    submitBtn.disabled = true
+
+    try {
+        // Step 1: Save or update customer
+        const { data: customer, error: customerError } = await supabaseClient
+            .from('customers')
+            .upsert(
+                { full_name, email, phone, company },
+                { onConflict: 'email' }
+            )
+            .select()
+            .single()
+
+        if (customerError) throw customerError
+
+        // Step 2: Save service request
+        const { error: servicingError } = await supabaseClient
+            .from('servicing')
+            .insert({
+                customer_id: customer.id,
+                robot_model,
+                serial_number,
+                purchase_date,
+                service_type,
+                issue_description: issues,
+                preferred_date,
+                preferred_time: preferred_time || null,
+                service_location,
+                company,
+                service_status: 'scheduled'
+            })
+
+        if (servicingError) throw servicingError
+
+        // Success!
+        alert('✅ Service request scheduled! Our team will confirm your appointment within 24 hours.')
+        this.reset()
+
+    } catch (error) {
+        console.error('Error:', error)
+        alert('❌ Something went wrong: ' + error.message)
+    } finally {
+        submitBtn.textContent = 'Schedule Service'
+        submitBtn.disabled = false
+    }
+})
+</script>
+</body>
+</html>
