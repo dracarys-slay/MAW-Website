@@ -1,0 +1,19 @@
+# Environment & config files with secrets
+config.js
+.env
+.env.*
+
+# Data files
+data/submissions.json
+
+# Python
+__pycache__/
+*.py[cod]
+
+# OS files
+Thumbs.db
+.DS_Store
+
+# IDE
+.vscode/
+.idea/

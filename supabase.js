@@ -1,4 +1,3 @@
-const SUPABASE_URL = 'https://lcfyugbsylimjsdyfzcs.supabase.co'
-const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImxjZnl1Z2JzeWxpbWpzZHlmemNzIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzE0Mjc5NzIsImV4cCI6MjA4NzAwMzk3Mn0.DOX7sweiRnxFQE5o6evCNhXC69sJ9yIfqBxrjesfUqs'
+// SUPABASE_URL and SUPABASE_KEY are loaded from config.js (not committed to Git)
 const { createClient } = supabase
 const supabaseClient = createClient(SUPABASE_URL, SUPABASE_KEY)

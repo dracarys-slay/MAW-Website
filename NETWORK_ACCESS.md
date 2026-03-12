@@ -39,7 +39,7 @@ Your website is now accessible to everyone on your network!
 - ✓ Schedule servicing
 - ✓ File complaints
 - ✓ Submit feedback
-- ✓ Admin dashboard (email: admin@mawrobotics.com, password: MAWadmin@2026)
+- ✓ Admin dashboard (login with your Supabase admin credentials)
 
 ---
 

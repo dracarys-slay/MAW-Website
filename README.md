@@ -136,12 +136,9 @@ MAW_Robotics_Website/
 
 ## 🔐 Admin Credentials
 
-To access the admin panel:
+To access the admin panel, use the credentials configured in your Supabase project.
 
-**Email:** `admin@mawrobotics.com`
-**Password:** `MAWadmin@2026`
-
-⚠️ **Security Note:** These credentials should be changed after first login in production. The admin panel can only be accessed via the admin link.
+⚠️ **Security Note:** Admin credentials must never be committed to the repository. Set them up via Supabase Auth dashboard.
 
 ---
 
@@ -170,9 +167,7 @@ To access the admin panel:
 
 ### 4. **Admin Panel Access**
 1. Click "Admin" link in navigation
-2. Enter credentials:
-   - Email: `admin@mawrobotics.com`
-   - Password: `MAWadmin@2026`
+2. Enter your admin credentials (configured in Supabase Auth)
 3. View all submissions in organized categories
 4. Search, filter, and export data
 

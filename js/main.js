@@ -2,8 +2,8 @@
 
 const MAW_ADMIN_SETTINGS_KEY = 'mawAdminSettings';
 const MAW_ADMIN_DEFAULT_SETTINGS = {
-    email: 'admin@mawvriddhifuturetech.com',
-    password: 'MAW_Admin@2026'
+    email: '',
+    password: ''
 };
 
 function normalizeHost(hostname) {
